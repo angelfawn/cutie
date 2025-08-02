@@ -1,3 +1,6 @@
+// ===== ===== ===== ===== =====
+// Size of text.
+//
 
 WishCalc.Style.GetTextWidth = function(text, font)
 {
@@ -23,6 +26,7 @@ WishCalc.Style.FitText = function(containerID)
     const maxFontSize = 32;
     const container = document.getElementById(containerID);
 
+    // let fontSize   = Number(String(getCSSStyle(container, "font-size")).slice(0, 2));
     let fontSize   = 32;
     let textWidth  = WishCalc.Style.GetTextWidth(container.textContent, WishCalc.Style.GetCanvasFont(container, { "fontSize": `${fontSize}px` }));
     let sizingRate = textWidth == container.offsetWidth ? 0 : (textWidth < container.offsetWidth ? -1 : 1);
@@ -40,6 +44,9 @@ WishCalc.Style.FitText = function(containerID)
 
 
 
+// ===== ===== ===== ===== =====
+// Formatting of text.
+//
 
 WishCalc.Style.Round = function(value, decimals = 0)
 {
@@ -66,7 +73,14 @@ WishCalc.Style.Number = function(quantity, name) { return `${quantity} ${name}${
 
 
 
+// ===== ===== ===== ===== =====
+// Add some listeners to call the functions, and execute functions on load.
+//
 
+// document.defaultView.addEventListener("resize", (e) => { 
+//     WishCalc.Style.FitText("page-calculator-header");
+// });
+// WishCalc.Style.FitText("page-calculator-header");
 
 {
     let wcMainPage = document.getElementById("wc-inner-page-main");

@@ -1,5 +1,12 @@
+// This code was made based on information from the following:
+// - https://www.hoyolab.com/article/497840
+// - https://genshin-impact.fandom.com/wiki/Wishes
 
 
+// NOTES:
+// [1] You can observe that there's some code just to handle validation of arguments passed into the functions.
+//     Normally, these argument validations may be unnecessary, but there was a push towards providing some ease in using this independently,
+//     such as just calling the functions through the browser console instead of through the user interface.
 
 
 
@@ -137,6 +144,7 @@ WishCalc.ValidateCalculationArgs = function(args)
 }
 
 
+// Function for getting the probability.
 WishCalc.Calculate = function(args)
 {
 	let infoTimeStart = new Date();
@@ -144,6 +152,7 @@ WishCalc.Calculate = function(args)
     args = WishCalc.ValidateCalculationArgs(args);
 	let result = { Args: args };
 
+	// Do checks if the inputs are right, and output something if not.
 	if(args.Pulls < args.Target.Character + args.Target.Weapon)
 	{
 		result.Invalidation = `${WishCalc.Style.Number(args.Pulls, "pull")} for ${args.Target.Character + args.Target.Weapon} items is not enough.`;
@@ -160,16 +169,20 @@ WishCalc.Calculate = function(args)
 		return result;
 	}
 	
+	// Get the first distribution, with character and weapon copies separated.
 	let firstDistribution = { };
 	if(args.Target.Character > 0)
 	{
+		// Calculate character distribution.
 		firstDistribution.Character = WishCalc.GetFirstCharacterDistribution(args.Pity.Character, args.Guarantee.Character, args.Pity.Radiance);
 		
+		// Just keep adding as needed.
 		for(let iCa = 1; iCa < args.Target.Character; iCa++)
 			firstDistribution.Character = WishCalc.Arrays.AddCharacterCopy(firstDistribution.Character[0].length, firstDistribution.Character);
 	}
 	if(args.Target.Weapon > 0)
 	{
+		// Calculate weapon distribution.
 		firstDistribution.Weapon = WishCalc.GetFirstWeaponDistribution(args.Pity.Weapon, args.Guarantee.Weapon, args.EpitomizedPath);
 		for(let iCb = 1; iCb < args.Target.Weapon; iCb++)
 			firstDistribution.Weapon = WishCalc.Arrays.AddWeaponCopy(firstDistribution.Weapon);
@@ -179,6 +192,7 @@ WishCalc.Calculate = function(args)
 	let weaponPullLimit    = firstDistribution.Weapon    != null ? firstDistribution.Weapon.length : 0;
 	let pairPullLimit      = characterPullLimit + weaponPullLimit;
 
+	// Get result, perhaps by combining the character and weapon distributions.
 	result.Result = 0.0;
 	if(args.Target.Character > 0 && args.Target.Weapon > 0)
 	{
@@ -260,7 +274,7 @@ WishCalc.DisplayResult = function(result)
 		return;
 	}
 
-	let roundedResult = WishCalc.Utilities.Round(result.Result, 12);
+	let roundedResult = WishCalc.Utilities.Round(result.Result, 12); // 12 digits seem to be most stable enough.
 	let resultString  = '"' + WishCalc.Style.Round(100 * roundedResult, 4) + "%\"";
 	resultElements.Result.textContent      = "Result: " + resultString + "";
 	resultElements.OddsSuccess.textContent = "Odds for success: " + ((roundedResult <= 0.5 && roundedResult > 0) ? (" 1 in " + WishCalc.Utilities.Commas(WishCalc.Style.Round(1 /      roundedResult)))  : "-");
