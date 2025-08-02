@@ -1,0 +1,59 @@
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem;
+}
+
+header, footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #FADADD; /* baby pink */
+    color: #333;
+}
+
+h1, h2, h3 {
+    color: #A8CABA; /* matcha green */
+    font-weight: 600;
+}
+
+button, input, select {
+    border: 1px solid #A8CABA;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #333;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover, input:hover, select:hover {
+    background-color: #A8CABA;
+    color: white;
+}
+
+.card {
+    border: 1px solid #FADADD;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+a {
+    color: #A8CABA;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
