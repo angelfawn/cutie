@@ -1,10 +1,10 @@
-// ===== ===== ===== ===== =====
-// Namespace object.
-// 
+
+
+
 
 var WishCalc = {
-	IsInitialized: false, // Variable for knowing if data has been initialized.
-	IsResultClean: false, // Variable for knowing if the result area is clean.
+	IsInitialized: false, 
+	IsResultClean: false, 
 	Utilities: {},
     Style:     {},
 	Generic:   {},
@@ -13,9 +13,9 @@ var WishCalc = {
 
 
 
-// ===== ===== ===== ===== =====
-// Object and data processing.
-// 
+
+
+
 
 WishCalc.Utilities.IsObject = function(target)
 {
@@ -23,7 +23,7 @@ WishCalc.Utilities.IsObject = function(target)
     return target.constructor === ({}).constructor;
 }
 
-// A function to just get a number from (grab the numbers in) a string.
+
 WishCalc.Utilities.ParseInt = function(target)
 {
 	if(typeof target === "string" || (target instanceof String))
@@ -43,7 +43,7 @@ WishCalc.Utilities.ParseInt = function(target)
 	return parseInt(target);
 }
 
-// A function to help with making sure there are values where functions are looking for.
+
 WishCalc.Utilities.ValidateArguments = function(source, destination)
 {
 	if(source && WishCalc.Utilities.IsObject(destination))
@@ -70,9 +70,9 @@ WishCalc.Utilities.ValidateArguments = function(source, destination)
 
 
 
-// ===== ===== ===== ===== =====
-// Text formatting.
-// 
+
+
+
 
 WishCalc.Utilities.Commas = function(targetThing)
 {
@@ -87,9 +87,9 @@ WishCalc.Utilities.Round = function(x, y)
 
 
 
-// ===== ===== ===== ===== =====
-// Generic input types.
-// 
+
+
+
 
 WishCalc.Utilities.NumbersOnly = function(value, withDecimal = false)
 {
@@ -137,11 +137,11 @@ if(true)
 
 
 
-// ===== ===== ===== ===== =====
-// Specific input and output methods.
-// 
 
-// Function for cleaning the results area.
+
+
+
+
 WishCalc.CleanResult = function()
 {
 	if(WishCalc.IsResultClean !== true)
@@ -154,16 +154,16 @@ WishCalc.CleanResult = function()
 	}
 }
 
-// Generic function for the calculator to handle changes to an input.
+
 WishCalc.Generic.InputChange = function()
 {
 	WishCalc.CleanResult();
 }
 
-// Function to call on the loading of the website or at the very start of use.
+
 WishCalc.Initialize = function()
 {
-	// Attempt to smooth the provided data for base character distribution.
+	
 	let sum = 0.0;
 	for(let x = 0; x < dataChanceCharArray.length; x++)
 	{
@@ -174,7 +174,7 @@ WishCalc.Initialize = function()
 		dataChanceCharArray[x] /= sum;
 	}
 
-	// Attempt to smooth the provided data for base weapon distribution.
+	
 	sum = 0.0;
 	for(let x = 0; x < dataChanceWeapArray.length; x++)
 	{
