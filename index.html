@@ -19,6 +19,7 @@
 	<meta property="og:description" content="A calculator for calculating the probability of getting featured five-star characters and featured five-star weapons in the game known as &quot;Genshin Impact&quot;.">
 </head>
 <body>
+    <h1 class="page-screen-title">♡ Wish Probability Calculator ♡</h1>
 
     <section class="interface-super-container"><div class="interface-container">    
         <h1 id="page-calculator-header" class="active page-screen-title"><span class="optional">Genshin Impact </span>Wish<span class="optional">ing</span> Probability Calculator</h1>
@@ -80,9 +81,9 @@
                         <option value="true">Guaranteed</option>
                     </select>
                     <label for="input-character-pity">Character pulls pity?</label>
-					<input id="input-character-pity" name="PityCharPulls" class="input-number" value="" placeholder="0 out of 89">
+					<input id="input-character-pity" name="PityCharPulls" class="input-number" value="" placeholder="0 out of 89" placeholder="♡ enter value ♡">
                     <label for="input-character-pity">Radiance pity?</label>
-					<input id="input-radiance-pity" name="PityRadiance" class="input-number" value="" placeholder="0 out of 3">
+					<input id="input-radiance-pity" name="PityRadiance" class="input-number" value="" placeholder="0 out of 3" placeholder="♡ enter value ♡">
                     <label for="input-guaranteed-featured-weapon">Last <span class="optional">five-star (</span>5*<span class="optional">)</span> weapon?</label>
                     <select id="input-guaranteed-featured-weapon" name="WeapFeatureGuarantee">
                         <option value="false" selected>None</option>
@@ -90,7 +91,7 @@
                         <option value="false">Featured</option>
                     </select>
                     <label for="input-weapons-pity">Weapon pulls pity?</label>
-					<input id="input-weapons-pity" name="PityWeapPulls" class="input-number" value="" placeholder="0 out of 76">
+					<input id="input-weapons-pity" name="PityWeapPulls" class="input-number" value="" placeholder="0 out of 76" placeholder="♡ enter value ♡">
                     <label for="input-guaranteed-specific-weapon">Epitomized path<span class="optional"> status</span>?</label>
                     <select id="input-guaranteed-specific-weapon" name="WeapSpecificGuarantee">
                         <option value="0" selected>0/1</option>
@@ -101,9 +102,9 @@
 
                 <div>
                     <span class="section-text">Pulls</span>
-                    <label for="input-primogems">Primogems</label><input id="input-primogems" name="PullsPrimogems" class="input-number" value="0" placeholder="0">
-                    <label for="input-intertwined-fates">Intertwined Fates</label><input id="input-intertwined-fates" name="PullsFates" class="input-number" value="0" placeholder="0">
-                    <label for="input-starglitter">Starglitter</label><input id="input-starglitter" name="PullsStarglitter" class="input-number" value="0" placeholder="0">
+                    <label for="input-primogems">Primogems</label><input id="input-primogems" name="PullsPrimogems" class="input-number" value="0" placeholder="0" placeholder="♡ enter value ♡">
+                    <label for="input-intertwined-fates">Intertwined Fates</label><input id="input-intertwined-fates" name="PullsFates" class="input-number" value="0" placeholder="0" placeholder="♡ enter value ♡">
+                    <label for="input-starglitter">Starglitter</label><input id="input-starglitter" name="PullsStarglitter" class="input-number" value="0" placeholder="0" placeholder="♡ enter value ♡">
                 </div>
             </section>
             <section class="wc-results-block">
@@ -118,7 +119,7 @@
                     <p id="text-wc-result-description"></p>
                 </section>
                 <div class="grid-fit-rest buttons">
-                    <button id="button-wc-calculate">Calculate</button>
+                    <button onclick="WishCalc.Calculate()">Calculate</button>
                     <button id="button-wc-to-extra-info">
                         
                     </button>
